@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Price Predictor | Indian Real Estate (₹)</title>
+    <meta name="description" content="Enter house area size in square feet and get the predicted house price in Indian Rupees (₹ Lakhs and Crores).">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <div class="main-wrapper">
+        <!-- Top Header -->
+        <header class="simple-header">
+            <div class="header-badge">
+                <span class="pulse-dot"></span> Linear Regression AI Model · Indian System (₹)
+            </div>
+            <h1>House Price Predictor</h1>
+            <p class="subtitle">Enter your property's area size below to get an instant valuation in Indian Rupees (₹).</p>
+        </header>
+
+        <!-- Centered Main Prediction Box -->
+        <main class="calculator-card">
+            <form id="prediction-form" onsubmit="return false;">
+                <!-- Input Group -->
+                <div class="input-section">
+                    <label for="area-input" class="input-label">
+                        <span>Enter Area Size</span>
+                        <span class="label-hint">in Square Feet (sq ft)</span>
+                    </label>
+
+                    <div class="input-wrapper">
+                        <div class="input-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </div>
+                        <input 
+                            type="number" 
+                            id="area-input" 
+                            placeholder="e.g. 1500" 
+                            min="100" 
+                            max="15000" 
+                            step="10" 
+                            value="1500"
+                            autocomplete="off"
+                            required
+                        >
+                        <span class="input-unit">sq ft</span>
+                    </div>
+
+                    <!-- Quick Pick Chips -->
+                    <div class="chips-container">
+                        <span class="chips-label">Popular sizes:</span>
+                        <div class="chips-row">
+                            <button type="button" class="chip-btn" data-size="750">750 sq ft</button>
+                            <button type="button" class="chip-btn" data-size="1000">1,000 sq ft</button>
+                            <button type="button" class="chip-btn" data-size="1200">1,200 sq ft</button>
+                            <button type="button" class="chip-btn active" data-size="1500">1,500 sq ft</button>
+                            <button type="button" class="chip-btn" data-size="1800">1,800 sq ft</button>
+                            <button type="button" class="chip-btn" data-size="2000">2,000 sq ft</button>
+                            <button type="button" class="chip-btn" data-size="2500">2,500 sq ft</button>
+                        </div>
+                    </div>
+
+                    <!-- Predict Action Button -->
+                    <button type="button" id="btn-predict" class="predict-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        Calculate Price in Rupees (₹)
+                    </button>
+                </div>
+
+                <!-- Price Result Output Box in Rupees (Indian System) -->
+                <div class="output-section">
+                    <div class="output-header">
+                        <span class="output-tag">PREDICTED HOUSE PRICE (INDIAN SYSTEM)</span>
+                        <span class="model-badge" id="model-fit-badge">99.8% Model Fit (R²)</span>
+                    </div>
+
+                    <!-- Big Result Numbers in Crores / Lakhs -->
+                    <div class="price-container">
+                        <div class="price-usd-row">
+                            <span class="currency-symbol">₹</span>
+                            <span class="price-big" id="result-price-main">2.71 Crore</span>
+                        </div>
+                        <div class="price-k-row">
+                            <span>Full Amount: </span>
+                            <strong id="result-price-full">₹ 2,71,21,000</strong>
+                            <span class="separator">·</span>
+                            <span id="result-price-lakh">(₹271.21 Lakh)</span>
+                            <span class="separator">·</span>
+                            <span id="result-rate">₹ 18,081 / sq ft</span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <footer class="simple-footer">
+            <p>House Price Prediction Model · Linear Regression · Indian Real Estate Pricing</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
